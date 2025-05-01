@@ -1,0 +1,25 @@
+public class Runner {
+  public static void main(String[] args) {
+
+
+    Solitare Cole = new Solitare();
+    Cole.play();
+
+    /*
+    This is the index for how to play my verison of solitare
+
+    0 is the deck
+    1-7 are the Foundations
+    8-11 are the stacks
+
+    How to play
+
+    if you want to move the top Card of the Deck to lets say the first foundation you type "01". 
+    The rest of the combonations are the same
+    */
+
+    
+    
+    
+  }
+}
