@@ -1,0 +1,22 @@
+public class CardReader{
+
+  private String CardType;
+  private int CardValue;
+
+  public CardReader (String CardType, int CardValue){
+    this.CardType = CardType;
+    this.CardValue = CardValue;
+  }
+
+  public String getCardType(){
+    return CardType;
+  }
+
+  public int getCardValue(){
+    return CardValue;
+  }
+
+  public String toString() {
+    return CardType + " of " + CardValue;
+  }
+}
