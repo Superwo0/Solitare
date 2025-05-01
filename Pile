@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Pile {
+  private List<CardReader> cards;
+    
+  public Pile() {
+   cards = new ArrayList<>();
+  }
+    
+  // Add card to pile
+  public void addCard(CardReader card) {
+   cards.add(card);
+  }
+    
+  // Remove card from pile
+  public CardReader removeCard() {
+  if (cards.size() > 0) {
+    return cards.remove(cards.size() - 1);
+  }
+    return null;
+  }
+  
+    
+  // Get top card
+  public CardReader getTopCard() {
+   if (cards.size() > 0) {
+    return cards.get(cards.size() - 1);
+   }
+   return null;
+   }
+    
+  public int size() {
+    return cards.size();
+  }
+
+  //ToString method
+  public String toString() {
+    return cards.toString();
+  }
+}
