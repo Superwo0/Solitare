@@ -1,0 +1,95 @@
+import java.util.ArrayList; //importing the ArrayList
+import java.util.Scanner; //importing scanner
+import java.util.Collections; //importing Collections used for shuffling
+
+public class Solitare {
+
+  Scanner scanner = new Scanner(System.in);
+  String Player = "";
+  private Deck deck;
+  private Pile[] tableau;  // 7 piles for tableau
+  private Pile[] foundations;  // 4 piles for foundations
+  boolean Ended = false; //End condition
+  
+  
+  public Solitare(){
+    deck = new Deck();
+    tableau = new Pile[7];
+    foundations = new Pile[4];
+
+    // Initialize piles
+      for (int i = 0; i < 7; i++) {
+        tableau[i] = new Pile();
+      }
+        
+      for (int i = 0; i < 4; i++) {
+        foundations[i] = new Pile();
+      }
+        
+      // Deal cards to tableau
+      for (int i = 0; i < 7; i++) {
+       for (int j = 0; j <= i; j++) {
+         tableau[i].addCard(deck.DealCards());
+        }
+      }
+    }
+
+  public void displayTableau() {
+    for (int i = 0; i < 7; i++) {
+     System.out.println("Tableau " + (i + 1) + ": " + tableau[i]);
+
+    }
+  }
+
+  public void displayFoundation(){
+    for(int i = 0; i < 4; i++){
+      System.out.println("Suit " + (i + 1 ) + ": " + foundations[i]);
+    }
+  }
+
+  public void displayDeck(){
+    System.out.println("The Top Card " + deck.DealCards());
+  }
+  
+  
+  public void play(){
+    
+    System.out.println("Do you want to play Solitare?");
+    System.out.println("yes or no?");
+    Player = scanner.nextLine();
+
+    if(!Player.equals("no")){
+
+      displayDeck();
+      displayTableau();
+      displayFoundation();
+
+      
+
+      while(Ended == false){
+        
+      System.out.println("\n");
+      System.out.println("Which Card would you like to move where");
+      Player = scanner.nextLine();
+
+        /*
+        parse the userinput and split it into two things. where you want to swap and where too. make it one method
+        */
+        String FirstNumber = Player.substring(0,1);
+        String SecondNumber = Player.substring(1,2);
+        int firstNumber = Integer.parseInt(FirstNumber);
+        int secondNumber = Integer.parseInt(SecondNumber);
+      
+        CardReader card = tableau[firstNumber].getTopCard();
+        foundations[secondNumber].addCard(card);
+        tableau[firstNumber].removeCard();
+        
+        System.out.println("After move:");
+        displayDeck();
+        displayTableau();
+        displayFoundation();
+      }
+    }
+    System.out.println("Goodbye");
+  }
+}
