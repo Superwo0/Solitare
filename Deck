@@ -1,0 +1,32 @@
+import java.util.ArrayList; //importing the ArrayList
+import java.util.Collections; //importing Collections used for shuffling
+import java.util.HashMap;
+public class Deck{
+  private ArrayList<CardReader> Card;
+  private String[] suits = {"Hearts", "Diamonds", "Spades", "Clubs"};
+  private int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+
+  //contructor
+  public Deck(){
+    Card = new ArrayList<CardReader>();
+    for(String suit : suits){
+      for(int value : values){
+        Card.add(new CardReader(suit, value));
+      }
+    }
+    Shuffle();
+  }
+
+  //shuffle the deck
+  public void Shuffle(){
+    Collections.shuffle(Card);
+  }
+
+  //Deals the deck
+  public CardReader DealCards(){
+    if (Card.size() > 0) {
+        return Card.remove(Card.size() - 1);
+      }
+    return null;
+  }
+}
